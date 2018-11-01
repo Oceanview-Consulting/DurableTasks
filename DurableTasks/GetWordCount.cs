@@ -1,9 +1,6 @@
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Azure.WebJobs.Host;
 
 namespace DurableTasks
@@ -12,7 +9,8 @@ namespace DurableTasks
     {
         [FunctionName("GetWordCount")]
         public static async Task<int> Run(
-            [ActivityTrigger()] char firstChar,
+            [ActivityTrigger()]
+            char firstChar,
             TraceWriter log)
         {
             var repo = new InMemoryWordRepository();
