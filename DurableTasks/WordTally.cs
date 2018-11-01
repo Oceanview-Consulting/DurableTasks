@@ -9,7 +9,7 @@ using Microsoft.Azure.WebJobs.Host;
 
 namespace DurableTasks
 {
-    public static class Orchestrator
+    public static class WordTally
     {
         [FunctionName("WordTally")]
         public static async Task<int> Run(

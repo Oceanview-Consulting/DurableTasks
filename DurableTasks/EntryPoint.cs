@@ -30,9 +30,13 @@ namespace DurableTasks
                 name = data?.name;
             }
 
-            return name == null
-                ? req.CreateResponse(HttpStatusCode.BadRequest, "Please pass a name on the query string or in the request body")
-                : req.CreateResponse(HttpStatusCode.OK, "Hello " + name);
+            if(name == null)
+            {
+                return req.CreateErrorResponse(HttpStatusCode.BadRequest, "Please provide a name");
+            }
+
+            var instanceId = await starter.StartNewAsync("WordTally", name);
+            return starter.CreateCheckStatusResponse(req, instanceId);
         }
     }
 }

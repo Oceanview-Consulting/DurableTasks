@@ -17,6 +17,7 @@ namespace DurableTasks
         {
             var repo = new InMemoryWordRepository();
 
+            await Task.Delay(5000);
             var words = await repo.GetWordsByFirstLetter(firstChar);
 
             return words.Count();

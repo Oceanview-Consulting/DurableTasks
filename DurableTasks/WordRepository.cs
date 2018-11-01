@@ -8,7 +8,7 @@ namespace DurableTasks
 {
     public class InMemoryWordRepository : IWordRepository
     {
-        private List<string> _words;
+        private List<string> _words = new List<string>();
 
         public InMemoryWordRepository()
         {
